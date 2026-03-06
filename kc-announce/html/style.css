@@ -1,0 +1,228 @@
+/* =====================================================
+   GLOBAL
+===================================================== */
+
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: Georgia, serif;
+    user-select: none;
+}
+
+/* =====================================================
+   INPUT PANEL (ADMIN / LAW / MEDIC)
+===================================================== */
+
+#panel {
+    position: absolute;
+    inset: 0;
+    display: none;
+    background: rgba(0,0,0,0.65);
+}
+
+/* PANEL BOX */
+.panel-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 520px;
+    padding: 20px;
+
+    background: url("images/parchment.png");
+    background-size: cover;
+    background-position: center;
+
+    border-radius: 8px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.8);
+}
+
+/* HEADER */
+.panel-header {
+    font-size: 24px;
+    color: #2b1a0f;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+/* CLOSE BUTTON */
+#close {
+    float: right;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+/* TEXTAREA */
+#message {
+    width: 100%;
+    height: 130px;
+    resize: none;
+
+    font-size: 18px;
+    padding: 12px;
+
+    border: none;
+    outline: none;
+
+    background: rgba(255,255,255,0.75);
+    color: #1b1b1b;
+
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* SEND BUTTON */
+#send {
+    margin-top: 12px;
+    width: 100%;
+    padding: 12px;
+
+    font-size: 18px;
+    letter-spacing: 1px;
+
+    background: #3b2a1a;
+    color: #f5e6c8;
+
+    border: none;
+    border-radius: 4px;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#send:hover {
+    background: #5a3c22;
+}
+
+/* =====================================================
+   ANNOUNCEMENT NOTIFICATION
+===================================================== */
+
+#announce-container {
+    position: absolute;
+    top: 6%;
+    left: 50%;
+
+    transform: translate(-50%, -220px);
+    width: 900px;
+
+    display: none;
+    text-align: center;
+
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+/* BADGE TOP CENTER */
+#badge {
+    position: absolute;
+    top: -55px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 95px;
+    z-index: 5;
+
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.8));
+}
+
+/* FRAME AREA */
+.announce-frame {
+    position: relative;
+    width: 100%;
+    height: 120px;
+}
+
+/* PARCHMENT BACKGROUND */
+.parchment {
+    width: 100%;
+    height: 100%;
+    object-fit: fill; /* Diubah dari contain ke fill */
+    border-radius: 8px;
+    filter: brightness(0.85);
+}
+
+/* TEXT STYLE - PERBAIKAN UTAMA */
+#announce-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    /* Lebar disesuaikan dengan parchment */
+    width: 75%; /* Dikurangi dari 82% untuk safe margin */
+    max-width: 75%;
+    
+    /* PERBAIKAN TEXT WRAPPING */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+    
+    /* Ukuran font responsif */
+    font-size: 18px; /* Ukuran dasar */
+    
+    color: #271001;
+    letter-spacing: 0.5px; /* Sedikit dikurangi */
+    text-align: center;
+    line-height: 1.4; /* Ditambahkan untuk kerapian */
+
+    text-shadow:
+        0 0 6px rgba(0,0,0,0.9),
+        0 0 12px rgba(0,0,0,0.6);
+}
+
+/* Teks panjang akan mengecil secara otomatis */
+#announce-text.long-text {
+    font-size: 16px;
+}
+
+#announce-text.very-long-text {
+    font-size: 14px;
+}
+
+/* =====================================================
+   CINEMATIC ANIMATION
+===================================================== */
+
+.slide-in {
+    animation: slideDown 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.slide-out {
+    animation: slideUp 0.5s ease forwards;
+}
+
+@keyframes slideDown {
+
+    0% {
+        transform: translate(-50%, -220px);
+        opacity: 0;
+    }
+
+    60% {
+        transform: translate(-50%, 15px);
+        opacity: 1;
+    }
+
+    80% {
+        transform: translate(-50%, -5px);
+    }
+
+    100% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -220px);
+        opacity: 0;
+    }
+}
